@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button';
-import { FcGoogle } from "React-icons/fc"
+import { FcGoogle } from "react-icons/fc"
 import  { FaGithub } from "react-icons/fa";
 
 const Social = () => {
