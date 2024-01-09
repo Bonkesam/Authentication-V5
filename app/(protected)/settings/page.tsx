@@ -1,4 +1,3 @@
-import { auth } from "@uth";
 
 const SettingsPage =  async () => {
   return (
