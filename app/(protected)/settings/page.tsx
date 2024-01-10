@@ -17,7 +17,7 @@ const SettingsPage =  async () => {
           Sign Out
         </button>
       </form>
-      Settings Page
+      
     </div>
   )
 }
