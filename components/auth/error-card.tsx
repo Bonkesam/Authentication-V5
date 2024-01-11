@@ -1,4 +1,4 @@
-import CardWrapper from "./card-wrapper";
+import CardWrapper from "@/components/auth/card-wrapper";
 import { FaExclamationTriangle } from "react-icons/fa";
 
 
