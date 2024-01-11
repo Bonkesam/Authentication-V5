@@ -7,6 +7,9 @@ import { signIn } from "@/auth";
 import { LoginSchema } from "@/schemas";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
+import { generateVerificationToken } from "@/lib/tokens";
+import { getUserByEmail } from "@/data/user";
+
 export const login = async (values: z.infer<typeof LoginSchema>) => {
     const ValidatedFields = LoginSchema.safeParse(values);
 
@@ -16,12 +19,25 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
     const { email, password} = ValidatedFields.data;
 
+    const existinguser = await getUserByEmail(email);
+
+    if (!existinguser || !existinguser.email || !existinguser?.password) {
+        return { error: "Email does not exist!"}
+    }
+
+    if (!existinguser.emailVerified) {
+        const verificationToken = await generateVerificationToken( existinguser.email);
+        return { success: "Confirmation email sent!"};
+
+    }
+
     try {
         await signIn("credentials", {
             email,
             password,
             redirectTo: DEFAULT_LOGIN_REDIRECT,
         })
+
     } catch (error) {
       
         if (error instanceof AuthError ) {
