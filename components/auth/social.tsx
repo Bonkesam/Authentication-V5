@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '../ui/button';
 import { FcGoogle } from "react-icons/fc"
 import  { FaGithub } from "react-icons/fa";
-import { signIn } from '@/auth';
+import { signIn } from 'next-auth/react';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 const Social = () => {
