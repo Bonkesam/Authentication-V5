@@ -26,7 +26,7 @@ import CardWrapper from './card-wrapper'
 import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { reset } from "@/actions/reset";
+import { newPassword } from "@/actions/new-password";
 
 const NewPasswordForm = () => {
 
@@ -51,7 +51,7 @@ const NewPasswordForm = () => {
 
 
     startTransition(() => {
-      reset(values)
+      newPassword(values, token)
       .then((data) => {
         setError(data?.error);
         setSuccess(data?.success);
