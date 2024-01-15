@@ -67,7 +67,7 @@ model PasswordResetToken {
   @@unique([email, token])
 }
 
-model TwoFactToken {
+model TwoFactorToken {
   id      String   @id @default(cuid())
   email   String
   token   String   @unique
