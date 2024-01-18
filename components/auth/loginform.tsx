@@ -153,7 +153,7 @@ const LoginForm = () => {
 
           <FormSuccess  message={success}/>
           <Button disabled={isPending} type="submit" className="w-full">
-            Login
+            {showTwoFactor ? "Confirm" : "Login"}
           </Button> 
        </form>
       </Form>
