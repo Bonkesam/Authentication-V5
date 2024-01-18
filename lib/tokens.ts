@@ -16,11 +16,13 @@ export const generateTwoFactorToken = async ( email: string) => {
 
     if (existingToken) {
         await db.twoFactorToken.delete({
-            where: {
-                id: existingToken.id,
-            }
-        });
-    }
+               where: {
+                   id: existingToken.id,
+               }
+           });
+       }
+
+   
 
     const twoFactorToken = await db.twoFactorToken.create({
         data: {

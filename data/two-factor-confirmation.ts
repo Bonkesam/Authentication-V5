@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 
 
-export const getTwoFactorTokenByUserId = async (
+export const getTwoFactorConfirmationByUserId = async (
     userId: string
 ) => {
     try {
