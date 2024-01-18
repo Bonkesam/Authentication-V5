@@ -43,7 +43,9 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
         await sendTwoFactorTokenEmail(
             twoFactorToken.email,
             twoFactorToken.token,
-        )
+        );
+
+        return {twoFactor: true};
     }
 
     try {
