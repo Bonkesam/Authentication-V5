@@ -12,7 +12,8 @@ export const LoginSchema = z.object({
     }),
     password: z.string().min(1, {
         message: "You need a password to proceed"
-    })
+    }),
+    code: z.optional(z.string()),
 });
 export const ResetSchema = z.object({
     email: z.string().email({
