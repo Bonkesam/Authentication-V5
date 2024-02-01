@@ -68,7 +68,7 @@ const LoginForm = () => {
           setShowTwoFactor(true);
         }
       })
-      .catch(() => setError("Something went wrong"))
+      .catch(() => setError("Something went wrong"));
     });
   }
   return (
@@ -84,7 +84,7 @@ const LoginForm = () => {
             {showTwoFactor && (
               <FormField
               control={form.control}
-              name="email"
+              name="code"
               render={({field}) => (
                 <FormItem>
                   <FormLabel>Two Factor Code</FormLabel>

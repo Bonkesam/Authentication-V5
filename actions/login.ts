@@ -55,17 +55,29 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
                 return { error: "Invalid code!"};
             }
 
-            const hasExpired = new Date(twoFactorToken.expires) < new date();
+            const hasExpired = new Date(twoFactorToken.expires) < new Date();
 
             if (hasExpired) {
                 return { error: "Code has expired!"}
             }
 
             await db.twoFactorToken.delete({
-                where: { id: twoFactorToken.ID}
+                where: { id: twoFactorToken.id}
             });
 
-            const existConfirmation = await getTwoFactorConfirmationByUserId(existinguser.id);
+            const existingConfirmation = await getTwoFactorConfirmationByUserId(existinguser.id);
+
+            if (existingConfirmation) {
+                await db.twoFactorConfirmation.delete({
+                    where: { id: existingConfirmation.id}
+                });
+            }
+
+            await db.twoFactorConfirmation.create({
+                data:  {
+                    userId: existinguser.id,
+                }
+            });
         } else{
             const twoFactorToken = await generateTwoFactorToken(existinguser.email)
             await sendTwoFactorTokenEmail(
