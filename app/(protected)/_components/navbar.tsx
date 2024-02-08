@@ -31,7 +31,7 @@ const Navbar = () => {
         <Button asChild
             variant={pathname === '/client' ? "default" : "outline"}
         >
-            <Link href="/server">
+            <Link href="/client">
                 Client
             </Link>
         </Button>
@@ -39,7 +39,7 @@ const Navbar = () => {
         <Button asChild
             variant={pathname === '/admin' ? "default" : "outline"}
         >
-            <Link href="/server">
+            <Link href="/admin">
                 Admin
             </Link>
         </Button>
