@@ -10,7 +10,7 @@ import { FormError } from '@/components/form-error';
 import { FormSuccess } from '@/components/form-success';
 
 
-const newVerificationForm = () => {
+const NewVerificationForm = () => {
     const [error, setError] = useState<string | undefined>();
     const [success, setSuccess] = useState<string | undefined>();
 
@@ -60,4 +60,4 @@ const newVerificationForm = () => {
   )
 }
 
-export default newVerificationForm;
+export default NewVerificationForm;
